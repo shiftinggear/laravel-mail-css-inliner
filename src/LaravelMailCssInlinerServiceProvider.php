@@ -1,8 +1,9 @@
-<?php namespace Fedeisas\LaravelMailCssInliner;
+<?php
+
+namespace Fedeisas\LaravelMailCssInliner;
 
 use Illuminate\Support\ServiceProvider;
 use Swift_Mailer;
-use Fedeisas\LaravelMailCssInliner\CssInlinerPlugin;
 
 class LaravelMailCssInlinerServiceProvider extends ServiceProvider
 {
