@@ -31,7 +31,7 @@ class CssInlinerPluginTest extends TestCase
         'converted-html-with-links-css',
     ];
 
-    public function setUp()
+    public function setUp() : void
     {
         foreach (self::$stubDefinitions as $stub) {
             $this->stubs[$stub] = file_get_contents(__DIR__ . '/stubs/' . $stub . '.stub');
@@ -41,13 +41,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBody()
+    public function itShouldConvertHtmlBody() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -60,14 +60,14 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBodyWithGivenCss()
+    public function itShouldConvertHtmlBodyWithGivenCss() : void
     {
         $this->options['css-files'] = [__DIR__ . '/css/test.css'];
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -80,13 +80,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBodyAndTextParts()
+    public function itShouldConvertHtmlBodyAndTextParts() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -103,13 +103,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldLeavePlainTextUnmodified()
+    public function itShouldLeavePlainTextUnmodified() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -124,13 +124,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBodyAsAPart()
+    public function itShouldConvertHtmlBodyAsAPart() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -145,13 +145,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBodyWithLinkCss()
+    public function itShouldConvertHtmlBodyWithLinkCss() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
@@ -165,13 +165,13 @@ class CssInlinerPluginTest extends TestCase
     }
 
     /** @test **/
-    public function itShouldConvertHtmlBodyWithLinksCss()
+    public function itShouldConvertHtmlBodyWithLinksCss() : void
     {
-        $mailer = Swift_Mailer::newInstance(Swift_NullTransport::newInstance());
+        $mailer = new Swift_Mailer(new Swift_NullTransport());
 
         $mailer->registerPlugin(new CssInlinerPlugin($this->options));
 
-        $message = Swift_Message::newInstance();
+        $message = new Swift_Message();
 
         $message->setFrom('test@example.com');
         $message->setTo('test2@example.com');
